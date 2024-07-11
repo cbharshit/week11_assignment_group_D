@@ -17,10 +17,15 @@ func aboutHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "Welcome to About page.")
 }
 
+func productHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, "Welcome to Product page.")
+}
+
 func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", homeHandler)
 	mux.HandleFunc("/about", aboutHandler)
+	mux.HandleFunc("/product", productHandler)
 
 	log.Println("Starting server on :3001")
 	err := http.ListenAndServe(":3001", mux)
